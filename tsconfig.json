@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
     "isolatedModules": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": "./src",
+    "paths": {
+      "@": ["./"],
+      "@components": ["components/"],
+      "@stores": ["stores/"],
+    },
   }
 }
