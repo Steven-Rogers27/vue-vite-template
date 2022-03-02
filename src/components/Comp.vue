@@ -1,5 +1,5 @@
 <script lang="ts">
-import { mapWritableState, mapStores, } from 'pinia';
+import { mapWritableState, mapStores, mapState, } from 'pinia';
 import { useCounterStore } from '@stores'; 
 
 export default {
@@ -8,6 +8,7 @@ export default {
       workCount: 'count',
       workList: 'list',
     }),
+    ...mapState(useCounterStore, ['doubleCount']),
     ...mapStores(useCounterStore),
   },
   created() {
@@ -19,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <span>{{ counterStore.doublePlusOne }}</span>
+  <span>{{ doubleCount }}</span>
   <ul>
     <li v-for="c in workList" :key="c">
       {{c}}
