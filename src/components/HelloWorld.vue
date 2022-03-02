@@ -1,27 +1,32 @@
-<script setup>
-import { ref } from 'vue'
+<script lang="ts" setup>
 import { useCounterStore } from '@stores';
+import { storeToRefs } from 'pinia';
+import Comp from '@components/Comp.vue';
 
 defineProps({
   msg: String
 })
 
 const counter = useCounterStore();
-const count = ref(0)
+const { count } = storeToRefs(counter);
+const { increment, } = counter;
 
 const countClick = () => {
-  counter.count++;
   counter.$patch({
-    count: counter.count + 1,
+    count: count.value + 1,
   });
-  counter.increment();
+};
+
+const resetCount = () => {
+  counter.$state = {count: 34, list: ['apollo']};
 };
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
   <button @click="countClick">Count</button>
-  <span>{{ counter.count }}</span>
+  <button @click="resetCount">Reset</button>
+  <Comp />
 </template>
 
 <style scoped>

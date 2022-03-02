@@ -2,6 +2,7 @@
   "compilerOptions": {
     "isolatedModules": true,
     "types": ["vite/client"],
+    "typeRoots": ["./node_modules/@types/", "./node_modules/vue/"],
     "baseUrl": "./src",
     "paths": {
       "@": ["./"],
